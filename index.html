@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Divyallu 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#2a0f22;--wine2:#3d1830;--blush:#f7dcd6;--rose:#e0506f;--gold:#f3b84b;--leaf:#6f9a6a;--ink:#fff4ef}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--wine);color:var(--ink);font-family:Quicksand,system-ui,sans-serif;line-height:1.7;font-size:1.05rem;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,.serif{font-family:Fraunces,Georgia,serif;font-weight:500}
+img{max-width:100%;display:block}
+.hidden{display:none!important}
+
+/* gate */
+#gate{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,var(--wine2),var(--wine));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;transition:opacity .8s,transform .8s}
+#gate.out{opacity:0;transform:scale(1.06);pointer-events:none}
+#gate .small{color:var(--blush);opacity:.8}
+#gate h1{font-size:clamp(3rem,16vw,6.5rem);font-style:italic;line-height:1;margin:.6rem 0 1.4rem;color:var(--gold)}
+#count{display:flex;gap:1rem;margin-bottom:2rem}
+#count div{min-width:64px}
+#count b{display:block;font-family:Fraunces,serif;font-size:2rem;font-weight:500}
+#count span{font-size:.8rem;opacity:.7}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:.9rem 2.2rem;background:var(--gold);color:var(--wine);font-weight:600;font-size:1.05rem;transition:transform .15s}
+button:hover{transform:scale(1.04)}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:3rem 1.5rem}
+.arch{width:min(78vw,340px);aspect-ratio:3/4;border-radius:999px 999px 24px 24px;overflow:hidden;border:6px solid var(--gold);margin:0 auto 2rem;box-shadow:0 20px 60px #0008}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.hero h2{font-size:clamp(2.2rem,9vw,4.2rem);line-height:1.1}
+.hero h2 em{color:var(--gold)}
+.hero p{margin-top:1rem;color:var(--blush);opacity:.85}
+
+/* story */
+.story{max-width:560px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.mem{margin:4.5rem 0}
+.mem figure{background:var(--ink);padding:.7rem .7rem 1rem;border-radius:6px;box-shadow:0 14px 40px #0007;width:min(100%,380px)}
+.mem:nth-child(odd) figure{transform:rotate(-2deg);margin-right:auto}
+.mem:nth-child(even) figure{transform:rotate(2.2deg);margin-left:auto}
+.mem img{border-radius:3px;width:100%;height:auto}
+.mem p{font-family:Fraunces,serif;font-style:italic;font-size:1.25rem;margin-top:1.4rem;color:var(--blush);max-width:26ch}
+.mem:nth-child(even) p{margin-left:auto;text-align:right}
+
+/* videos */
+#videos{max-width:560px;margin:0 auto;padding:1rem 1.5rem 3rem}
+#videos h2{font-size:2rem;margin-bottom:1.5rem;font-style:italic}
+#videos video{width:100%;border-radius:14px;margin-bottom:1.5rem;background:#000}
+
+/* letter */
+.letter{max-width:560px;margin:2rem auto;padding:2.2rem 1.8rem;background:var(--blush);color:#3a1a2a;border-radius:4px;box-shadow:0 16px 50px #0008}
+.letter h2{font-size:1.8rem;margin-bottom:1rem;font-style:italic}
+.letter p{margin-bottom:1rem;font-size:1.08rem}
+.letter .sign{font-family:Fraunces,serif;font-style:italic;font-size:1.3rem;text-align:right}
+
+/* cake */
+.cake{text-align:center;padding:5rem 1.5rem 6rem}
+.cake h2{font-size:clamp(1.8rem,7vw,2.8rem);font-style:italic;margin-bottom:.5rem}
+.cake svg{width:min(80vw,320px);height:auto;margin:1.5rem auto}
+.flame{transition:opacity .6s,transform .6s;transform-origin:center bottom;animation:flick .5s infinite alternate}
+.flame.off{opacity:0;transform:scaleY(.2)}
+@keyframes flick{from{transform:scale(1,1)}to{transform:scale(.9,1.08)}}
+#wish{margin-top:1.5rem;font-family:Fraunces,serif;font-size:1.5rem;color:var(--gold);min-height:2.2rem}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:60}
+footer{text-align:center;padding:2rem 1rem 4rem;opacity:.7;font-size:.9rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ EDIT THIS PART ============ -->
+<script>
+const NAME = "Divyallu";
+const BIRTHDAY = "2026-10-28T00:00:00";      // countdown target
+const FROM = "Your bestie";                   // change to your name
+const HERO = "photos/3.jpg";                  // photo shown at the top
+// photo file + caption (change captions anytime)
+const MEMORIES = [
+  ["photos/2.jpg", "Just us, talking about nothing and everything."],
+  ["photos/6.jpg", "Some days, a shoulder is all you need."],
+  ["photos/9.jpg", "Same bench. Same us."],
+  ["photos/7.jpg", "Our smiles never needed a reason."],
+  ["photos/8.jpg", "Laughing at things only we understand."],
+  ["photos/4.jpg", "Hugs that feel like home."],
+  ["photos/5.jpg", "My favourite person, up close."],
+  ["photos/10.jpg", "Rain or shine, under the same umbrella."],
+  ["photos/1.jpg", "And look at you. Always shining."]
+];
+// add video files here after putting them in the "videos" folder, e.g. ["videos/one.mp4","videos/two.mp4"]
+const VIDEOS = [];
+// the letter: each line is one paragraph. Make it yours!
+const LETTER = [
+  "Happy Birthday, " + NAME + "! 🎂",
+  "I wanted to give you something more than a normal birthday message, so I made you this little corner of the internet.",
+  "We have been best friends since 6th class. Think about that for a second. We started as two small kids in a classroom, and somehow we are still here, still us, still together.",
+  "We have been through so much together. Classrooms, uniforms, exams, secrets, silly jokes, random talks, and so many days that looked ordinary but became my best memories.",
+  "We have laughed at things that were not even funny. We have also had our fights and our silent days. But every single time, we found our way back to each other. That is how I know this friendship is real.",
+  "You know me better than anyone. You have seen my good days and my bad days, and you never left. Thank you for that. Thank you for every time you listened, every time you laughed with me, and every time you simply stayed.",
+  "Years have passed and we have both grown, but when I look at you, I still see the same friend I met back in 6th class. And I hope that never changes.",
+  "I wish you a year full of happiness, success, peace, and every dream you are working for. I hope you always keep that beautiful smile on your face.",
+  "Whatever happens in life, remember one thing: I am always on your side. Always.",
+  "I love you so much, my Divyallu. Thank you for being my friend for all these years. Here is to many more. ❤️"
+];
+// optional: put a song named music.mp3 in the same folder and it plays when she taps Open
+// ========================================= -->
+</script>
+
+<section id="gate">
+  <p class="small">A surprise, just for you</p>
+  <h1 id="gname"></h1>
+  <div id="count" aria-live="off"></div>
+  <button id="open">Open your surprise 🎁</button>
+</section>
+
+<main id="main" class="hidden">
+  <section class="hero">
+    <div>
+      <div class="arch"><img id="heroImg" alt=""></div>
+      <h2>Happy Birthday,<br><em id="hname"></em> 🎉</h2>
+      <p>Scroll down. Some memories are waiting.</p>
+    </div>
+  </section>
+
+  <section class="story" id="story"></section>
+
+  <section id="videos" class="hidden"><h2>Moments in motion</h2><div id="vlist"></div></section>
+
+  <section class="letter" id="letter"></section>
+
+  <section class="cake">
+    <h2>Make a wish, <span id="cname"></span></h2>
+    <p>Tap the candles to blow them out</p>
+    <svg id="cakeSvg" viewBox="0 0 300 280" role="button" tabindex="0" aria-label="Blow out the candles">
+      <ellipse cx="150" cy="262" rx="130" ry="12" fill="#0005"/>
+      <rect x="40" y="170" width="220" height="90" rx="14" fill="#e0506f"/>
+      <path d="M40 190 q18 26 36 0 q18 26 36 0 q18 26 36 0 q18 26 36 0 q18 26 36 0 q18 26 36 0 V170 H40Z" fill="#fff4ef"/>
+      <rect x="60" y="110" width="180" height="66" rx="12" fill="#f3b84b"/>
+      <path d="M60 128 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 V110 H60Z" fill="#fff4ef"/>
+      <g fill="#6f9a6a"><rect x="100" y="76" width="10" height="36" rx="3"/><rect x="145" y="70" width="10" height="42" rx="3"/><rect x="190" y="76" width="10" height="36" rx="3"/></g>
+      <g fill="#f3b84b" class="flames">
+        <path class="flame" d="M105 70 q-9-14 0-28 q9 14 0 28Z"/>
+        <path class="flame" d="M150 64 q-9-14 0-28 q9 14 0 28Z"/>
+        <path class="flame" d="M195 70 q-9-14 0-28 q9 14 0 28Z"/>
+      </g>
+    </svg>
+    <div id="wish"></div>
+  </section>
+
+  <footer>Made with love by <span id="from"></span> 💛</footer>
+</main>
+
+<canvas id="fx"></canvas>
+<audio id="bg" src="music.mp3" loop preload="none"></audio>
+
+<script>
+const $ = id => document.getElementById(id);
+$("gname").textContent = NAME; $("hname").textContent = NAME; $("cname").textContent = NAME; $("from").textContent = FROM;
+$("heroImg").src = HERO; $("heroImg").alt = NAME;
+
+// countdown
+const cd = $("count");
+function tick(){
+  let d = new Date(BIRTHDAY) - new Date();
+  if (d <= 0){ cd.innerHTML = '<b style="font-size:1.6rem;color:#f3b84b">It\'s today! 🎂</b>'; return; }
+  const s = Math.floor(d/1000), v = [["days",Math.floor(s/86400)],["hours",Math.floor(s%86400/3600)],["mins",Math.floor(s%3600/60)],["secs",s%60]];
+  cd.innerHTML = v.map(([l,n]) => `<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");
+}
+tick(); setInterval(tick, 1000);
+
+// memories
+$("story").innerHTML = MEMORIES.map(([src,cap]) =>
+  `<div class="mem"><figure><img src="${src}" alt=""></figure><p>${cap}</p></div>`).join("");
+
+// videos
+if (VIDEOS.length){
+  $("videos").classList.remove("hidden");
+  $("vlist").innerHTML = VIDEOS.map(v => `<video src="${v}" controls playsinline preload="metadata"></video>`).join("");
+}
+
+// letter
+$("letter").innerHTML = "<h2>A little letter</h2>" + LETTER.map(t => `<p>${t}</p>`).join("") + `<p class="sign">— ${FROM}</p>`;
+
+// open
+$("open").onclick = () => {
+  $("gate").classList.add("out");
+  $("main").classList.remove("hidden");
+  window.scrollTo(0,0);
+  const a = $("bg"); a.play().catch(()=>{});
+  confetti(90);
+  setTimeout(() => $("gate").remove(), 900);
+};
+
+// confetti
+const cv = $("fx"), cx = cv.getContext("2d"); let parts = [], run = false;
+function size(){ cv.width = innerWidth; cv.height = innerHeight; } size(); addEventListener("resize", size);
+function confetti(n){
+  const cols = ["#f3b84b","#e0506f","#f7dcd6","#6f9a6a","#fff"];
+  for (let i=0;i<n;i++) parts.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*.4,r:4+Math.random()*5,c:cols[i%5],vy:2+Math.random()*3,vx:-1+Math.random()*2,a:Math.random()*6});
+  if (!run){ run = true; loop(); }
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(p => { p.y += p.vy; p.x += p.vx + Math.sin(p.a+=.05); cx.fillStyle = p.c; cx.fillRect(p.x,p.y,p.r,p.r*1.6); });
+  parts = parts.filter(p => p.y < cv.height + 20);
+  if (parts.length) requestAnimationFrame(loop); else { run = false; cx.clearRect(0,0,cv.width,cv.height); }
+}
+
+// candles
+let blown = false;
+function blow(){
+  if (blown) return; blown = true;
+  document.querySelectorAll(".flame").forEach(f => f.classList.add("off"));
+  $("wish").textContent = "Wish made. Happy Birthday, " + NAME + " ❤️";
+  confetti(220);
+}
+$("cakeSvg").addEventListener("click", blow);
+$("cakeSvg").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") blow(); });
+</script>
+</body>
+</html>
